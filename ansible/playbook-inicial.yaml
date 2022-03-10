@@ -1,4 +1,4 @@
-- name: configuracion inicial
+- name: Configuracion inicial
   hosts: workers
   gather_facts: false
   become: true
