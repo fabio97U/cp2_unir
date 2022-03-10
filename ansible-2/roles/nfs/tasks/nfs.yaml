@@ -1,0 +1,33 @@
+---
+- name: Instalamos los paquetes de NFS
+  dnf:
+    name: ["nfs-utils", "net-tools"]
+
+- name: Arrancamos el servicio
+  shell: systemctl enable nfs-server;systemctl start nfs-server
+
+- name: Lo siguiente será compartir un directorio para exportar por NFS, para ello creamos un directorio
+  file: path=/srv/nfs state=directory mode=777 owner=root group=root
+
+- name: Copiando a /etc/exports
+  template: src=exports.j2 dest=/etc/exports owner=root group=root
+
+- name: Aplicar la nueva configuracion exportfs -r
+  command: exportfs -r
+
+- name: Aplicar la nueva configuracion exportfs -s
+  command: exportfs -s
+  
+- name: Abrir puertos para que servicios sean accesibles
+  firewalld:
+    service: "{{ item }}"
+    permanent: yes
+    state: enabled
+    immediate: yes
+  loop:
+    - nfs
+    - rpc-bind
+    - mountd
+
+- name: Reiniciar firewall
+  command: firewall-cmd --reload

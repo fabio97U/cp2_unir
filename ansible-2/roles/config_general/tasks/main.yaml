@@ -1,0 +1,25 @@
+---
+- name: Asignar zona horaria Europe/Madrid
+  timezone:
+    name: Europe/Madrid
+- name: Instalar Chrony
+  package:
+    name: "chrony"
+    state: "present"
+- name: Habilitar Chrony
+  command: /usr/bin/systemctl enable chronyd
+- name: Iniciar Chrony
+  command: /usr/bin/systemctl start chronyd
+- name: Setear ntp a true
+  command: /usr/bin/timedatectl set-ntp true
+- name: Deshabilitar SELinux
+  selinux:
+    state: disabled
+- name: Setear SELinux in modo permisivo permisivo hasta que se reinicie la maquina
+  command: setenforce 0
+  ignore_errors: true
+  changed_when: false
+- name: instalar nfs-utils nfs4-acl-tools wget
+  dnf:
+    name: ["nfs-utils", "nfs4-acl-tools", "wget"]
+    state: latest
