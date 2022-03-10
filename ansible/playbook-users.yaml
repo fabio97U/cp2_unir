@@ -11,7 +11,10 @@
         line: "kube ALL=(ALL) NOPASSWD: ALL"
         validate: "visudo -cf %s"
 
-    - name: set up authorized keys for the kube user
-      authorized_key: user=kube key="{{item}}"
+    - name: "set up authorized keys for the kube user"
+      ansible.posix.authorized_key:
+        user: kube
+        state: present
+        key: "{{ item }}"
       with_file:
-        - ~/.ssh/id_rsa.pub
+        - ~/.ssh/id_rsa_cp2
