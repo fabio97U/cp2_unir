@@ -6,5 +6,5 @@
 
 - name: Install the latest version net-tool
   yum:
-    name: net-tool
+    name: net-tools
     state: latest

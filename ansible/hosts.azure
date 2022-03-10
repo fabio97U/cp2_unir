@@ -2,7 +2,7 @@
 ansible_python_interpreter=/usr/bin/python3
 ansible_user=adminUsername
 
-[master]
+[masters]
 52.174.134.112
 
 [workers]
