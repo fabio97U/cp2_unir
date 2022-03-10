@@ -17,4 +17,5 @@
         state: present
         key: "{{ item }}"
       with_file:
-        - ~/.ssh/id_rsa_cp2
+        # - ~/.ssh/id_rsa_cp2
+        - /home/adminUsername/.ssh/id_rsa_cp2
