@@ -1,0 +1,6 @@
+- name: Configurando kubernetes en el nodo master
+  hosts: master
+  gather_facts: false
+  become: true
+  roles:
+    - k8master

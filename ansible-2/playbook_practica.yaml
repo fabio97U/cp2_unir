@@ -20,12 +20,12 @@
   roles:
     - k8config
 
-# - name: Configurando kubernetes en el nodo master
-#   hosts: master
-#   gather_facts: false
-#   become: true
-#   roles:
-#     - k8master
+- name: Configurando kubernetes en el nodo master
+  hosts: master
+  gather_facts: false
+  become: true
+  roles:
+    - k8master
 
 # - name: configuracion sdn calico
 #   hosts: master
