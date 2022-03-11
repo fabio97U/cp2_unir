@@ -3,7 +3,7 @@
   shell: "ps ax | grep cluster"
 
 - name: En el nodo master y en los workers será necesario abrir los siguientes puertos
-  hosts: "master, workers"
+  hosts: "{{ variable_host_sdn | default('master') }}"
   firewalld:
     port: "{{item}}"
     permanent: yes
@@ -11,10 +11,13 @@
     immediate: yes
   loop:
     - 8285/udp
-    - 8472/upd
+    - 8472/udp
 
 - name: Reiniciar firewall
   command: firewall-cmd --reload
 
-- name: Instalamos el operador de Tigera
+- name: Necesitamos descargar el siguiente fichero
   command: kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
+
+- name: Después de desplegar la SDN veremos algo como esto
+  command: kubectl get pods -A -o wide
