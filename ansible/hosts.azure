@@ -3,11 +3,11 @@ ansible_python_interpreter=/usr/bin/python3
 ansible_user=adminUsername
 
 [master]
-20.126.103.87
+master_address
 
 [workers]
-20.126.70.218
-20.126.103.81
+worker01_address
+worker02_address
 
 [nfs]
-20.126.71.66
+nfs_address

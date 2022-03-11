@@ -1,4 +1,5 @@
 # /bin/bahs
+
 # ----Ansible----#
 ansible-playbook -i hosts.azure 01-playbook-config-general.yaml
 ansible-playbook -i hosts.azure 02-playbook-tareas-comunes-nodos.yaml

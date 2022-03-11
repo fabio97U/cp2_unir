@@ -1,0 +1,13 @@
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_user=fabioramos
+
+[master]
+192.168.1.110
+
+[workers]
+192.168.1.111
+192.168.1.112
+
+[nfs]
+192.168.1.115
