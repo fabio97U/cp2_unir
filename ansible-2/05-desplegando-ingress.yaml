@@ -1,0 +1,7 @@
+---
+- name: Desplegando un ingress controller
+  hosts: master
+  gather_facts: false
+  become: true
+  roles:
+    - ingress-controller

@@ -3,7 +3,7 @@
   shell: "ps ax | grep cluster"
 
 - name: En el nodo master y en los workers será necesario abrir los siguientes puertos
-  hosts: "{{ variable_host_sdn | default('master') }}"
+  # hosts: "{{ variable_host_sdn | default('master') }}"
   firewalld:
     port: "{{item}}"
     permanent: yes
