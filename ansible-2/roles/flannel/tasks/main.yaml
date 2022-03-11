@@ -1,0 +1,20 @@
+---
+- name: VDeberemos verificar que en el master el controller manager está desplegado con las opciones --cluster-cidr= y --allocate-node-cidrs=true
+  shell: "ps ax | grep cluster"
+
+- name: En el nodo master y en los workers será necesario abrir los siguientes puertos
+  hosts: "master, workers"
+  firewalld:
+    port: "{{item}}"
+    permanent: yes
+    state: enabled
+    immediate: yes
+  loop:
+    - 8285/udp
+    - 8472/upd
+
+- name: Reiniciar firewall
+  command: firewall-cmd --reload
+
+- name: Instalamos el operador de Tigera
+  command: kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml

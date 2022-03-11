@@ -15,4 +15,6 @@ ansible-playbook -i hosts.practica playbook_practica.yaml
 ansible-playbook -i hosts.azure 01-playbook-config-general.yaml
 ansible-playbook -i hosts.azure 02-playbook-tareas-comunes-nodos.yaml
 ansible-playbook -i hosts.azure 03-playbook-tareas-master.yaml
-ansible-playbook -i hosts.azure 04-playbook-sdn-calico.yaml
+
+ansible-playbook -i hosts.azure 04-A-playbook-sdn-calico.yaml
+ansible-playbook -i hosts.azure 04-B-playbook-flannel.yaml
