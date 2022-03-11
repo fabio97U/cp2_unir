@@ -4,4 +4,4 @@
   gather_facts: false
   become: true
   roles:
-    - k8config
+    - k8s-config-comun

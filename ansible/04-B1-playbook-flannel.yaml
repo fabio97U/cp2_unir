@@ -4,4 +4,4 @@
   gather_facts: false
   become: true
   roles:
-    - flannel-abrir-puertos
+    - sdn-flannel-abrir-puertos

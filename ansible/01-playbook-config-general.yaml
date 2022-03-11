@@ -4,4 +4,4 @@
   gather_facts: false
   become: true
   roles:
-    - config_general
+    - config-general

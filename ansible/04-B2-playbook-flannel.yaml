@@ -1,7 +1,7 @@
 ---
-- name: Instalando la SDN
+- name: Instalando la SDN en Azure
   hosts: master
   gather_facts: false
   become: true
   roles:
-    - sdn_calico
+    - flannel-instalar

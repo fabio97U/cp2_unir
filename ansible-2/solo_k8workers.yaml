@@ -1,7 +1,0 @@
-- name: configurando kubernetes en workers
-  hosts: workers
-  gather_facts: false
-  become: true
-  roles:
-    - k8workers
-

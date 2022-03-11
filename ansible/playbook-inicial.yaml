@@ -1,6 +1,0 @@
-- name: Configuracion inicial
-  hosts: workers
-  gather_facts: false
-  become: true
-  roles:
-    - instalar

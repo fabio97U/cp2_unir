@@ -1,9 +1,7 @@
 ---
-- name: configuracion sdn calico
+- name: Instalando la SDN
   hosts: master
   gather_facts: false
   become: true
   roles:
-     - sdn_calico
-  
-
+    - sdn-calico
