@@ -1,21 +1,19 @@
 ---
-- name: Creando el usuario "{{ uusername_admink8s }}" con acceso de administrador, para la gestión del clúster
+- name: Creando el usuario "kubeadmin" con acceso de administrador, para la gestión del clúster
   user:
-    name: { { uusername_admink8s } }
-    password: { { upassword_admink8s | password_hash('sha512') } }
-    groups: admin append=yes
-  when: assigned_role  == "yes"
+    name: kubeadmin
+    password: 123
 
-- name: Contraseña que expira para la usuario "{{ uusername_admink8s }}"
-  shell: chage -d 0 "{{ uusername_admink8s }}"
+- name: Contraseña que expira para la usuario "kubeadmin"
+  shell: chage -d 0 "kubeadmin"
 
-- name: Para permitir que kubernetes maneje correctamente el tráfico con el cortafuegos
+- name: Se copia la configuracion del kluster al usuario
   shell: |
-    mkdir -p /home/{{ uusername_admink8s }}/.kube
-    cp -i /etc/kubernetes/admin.conf /home/{{ uusername_admink8s }}/.kube/config
-    chown {{ uusername_admink8s }}. /home/{{ uusername_admink8s }}/.kube/config
+    mkdir -p /home/kubeadmin/.kube
+    sudo cp /etc/kubernetes/admin.conf /home/kubeadmin/.kube/config
+    chown kubeadmin. /home/kubeadmin/.kube/config
 
-- name: Agregando usuario "{{ uusername_admink8s }}" a sudoers
+- name: Agregando usuario "kubeadmin" a sudoers
   blockinfile:
     create: yes
     path: "/etc/sudoers.d/kubeadmin"

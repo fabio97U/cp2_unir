@@ -4,6 +4,8 @@ ssh -i C:\Users\fabio.ramos\.ssh\id_rsa_cp2 fabio.ramos@20.103.251.15
 
 dnf install epel-release -y
 dnf install ansible git tree jq -y
+ansible-galaxy collection install ansible.posix
+ansible-galaxy collection install community.general
 
 dnf install python36 -y
 
@@ -15,8 +17,6 @@ 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
 chmod 777 cp2_unir/ansible/deploy.sh
 cd cp2_unir/ansible/
 ansible -i hosts.azure -m ping all
-ansible-galaxy collection install ansible.posix
-ansible-galaxy collection install community.general
 ./deploy.sh
 
 
