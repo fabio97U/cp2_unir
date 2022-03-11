@@ -17,7 +17,7 @@
 
 - name: Aplicar la nueva configuracion exportfs -s
   command: exportfs -s
-  
+
 - name: Abrir puertos para que servicios sean accesibles
   firewalld:
     service: "{{ item }}"

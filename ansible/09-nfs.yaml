@@ -1,0 +1,7 @@
+---
+- name: Instalación del servidor NFS
+  hosts: nfs
+  gather_facts: false
+  become: true
+  roles:
+    - crear-nfs

@@ -26,3 +26,5 @@ ansible-playbook -i hosts.azure 07-desplegando-aplicacion.yaml
 # > curl localhost:8001/api/v1/namespaces/kubernetes-dashboard/services
 
 ansible-playbook -i hosts.azure 08-creacion-usuario-no-admin.yaml
+
+ansible-playbook -i hosts.azure 09-nfs.yaml
