@@ -1,0 +1,6 @@
+---
+- name: Implementación de la interfaz de usuario del panel
+  command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml
+
+- name: Proxy de línea de comandos
+  command: kubectl proxy

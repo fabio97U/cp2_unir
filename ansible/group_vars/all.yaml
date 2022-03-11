@@ -13,3 +13,5 @@ workers_rule:
 kube_perm_workers_rule: rule family=ipv4 source address=172.17.0.1/16 accept
 
 variable_host_sdn: ["master", "workers"]
+uusername_admink8s: kubeadmin
+upassword_admink8s: 123

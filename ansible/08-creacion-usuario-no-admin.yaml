@@ -1,0 +1,7 @@
+---
+- name: Creamos un usuario no administrador
+  hosts: master
+  gather_facts: false
+  become: true
+  roles:
+    - crear-usuario-noadmin
