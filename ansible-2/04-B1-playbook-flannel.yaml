@@ -1,0 +1,7 @@
+---
+- name: Abriendo puertos para flannel
+  hosts: all
+  gather_facts: false
+  become: true
+  roles:
+    - flannel-abrir-puertos

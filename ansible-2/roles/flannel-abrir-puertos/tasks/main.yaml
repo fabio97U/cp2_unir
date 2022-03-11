@@ -1,0 +1,10 @@
+- name: En el nodo master y en los workers será necesario abrir los siguientes puertos
+  # hosts: "{{ variable_host_sdn | default('master') }}"
+  firewalld:
+    port: "{{item}}"
+    permanent: yes
+    state: enabled
+    immediate: yes
+  loop:
+    - 8285/udp
+    - 8472/udp
