@@ -14,3 +14,4 @@ ansible-playbook -i hosts.practica playbook_practica.yaml
 # ----Ansible2----#
 ansible-playbook -i hosts.azure 01-playbook-config-general.yaml
 ansible-playbook -i hosts.azure 02-playbook-tareas-comunes-nodos.yaml
+ansible-playbook -i hosts.azure 03-playbook-tareas-master.yaml
