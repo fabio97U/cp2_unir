@@ -1,0 +1,7 @@
+---
+- name: Tareas previas de configuración
+  hosts: all
+  gather_facts: false
+  become: true
+  roles:
+    - config_general

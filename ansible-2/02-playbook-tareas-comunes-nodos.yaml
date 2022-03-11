@@ -1,0 +1,7 @@
+---
+- name: Tareas comunes a realizar en el nodo master y los workers
+  hosts: all
+  gather_facts: false
+  become: true
+  roles:
+    - k8config

@@ -14,7 +14,9 @@ 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
 cd cp2_unir/ansible/
 
 ansible -i hosts.azure -m ping all
+
 ansible-galaxy collection install ansible.posix
+ansible-galaxy collection install community.general
 
 cd /home/adminUsername/
 rm -rf /home/adminUsername/cp2_unir
