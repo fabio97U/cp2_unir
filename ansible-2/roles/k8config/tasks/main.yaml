@@ -37,11 +37,11 @@
     dest: /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:1.23:1.23.1.repo
 
 - name: Configuramos los modulos del kernel necesarios para CRI-O
-  blockinfile:
-    path: "/etc/modules-load.d/crio.conf"
-    block: |
-      overlay
-      br_netfilter
+  shell: |
+    cat <<EOF > /etc/modules-load.d/crio.conf
+    overlay
+    br_netfilter
+    EOF
 
 - name: Instalamos CRI-O. Activamos y arrancamos el servicio
   dnf:
