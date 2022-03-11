@@ -27,12 +27,12 @@
   roles:
     - k8master
 
-# - name: configuracion sdn calico
-#   hosts: master
-#   gather_facts: false
-#   become: true
-#   roles:
-#     - sdn_calico
+- name: configuracion sdn calico
+  hosts: master
+  gather_facts: false
+  become: true
+  roles:
+    - sdn_calico
 
 # - name: configurando kubernetes en workers
 #   hosts: workers

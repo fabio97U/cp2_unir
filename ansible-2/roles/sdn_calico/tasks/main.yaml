@@ -6,9 +6,9 @@
 - debug:
     var: tigera_check.stdout
 
-- name: Instalar operador de Tigera
+- name: Instalamos el operador de Tigera
   command: kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
-  run_once: yes
+  # run_once: yes
   when: tigera_check.stdout != "Active"
 
 - name: Creamos el archivo custom-resources.yaml para la ip {{pod_network_cidr}}
@@ -18,7 +18,7 @@
     owner: root 
     group: root
 
-- name: Instalamos calico
+- name: Instalamos Calico
   command: kubectl apply -f /tmp/custom-resources.yaml
-  run_once: yes
+  # run_once: yes
 
