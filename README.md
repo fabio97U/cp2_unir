@@ -1,6 +1,6 @@
-# Resolución caso práctico 2 UNIR EU Devops y Cloud
+# Resolución caso práctico 2 UNIR EU DevOps y Cloud
 
-El siguiente documento describe como realiza el despliegue con Terraform y Ansible
+El siguiente documento describe como realizar el despliegue con Terraform y Ansible, se tienen que seguir los siguientes pasos uno a uno
 
 ### Clonar repositorio
 ```console
@@ -10,11 +10,11 @@ El siguiente documento describe como realiza el despliegue con Terraform y Ansib
 
 ## Configuración con Terraform
 Version de terraform y provider utilizada
-- Terraform v1.1.7
+- Terraform v1.1.7 on windows_amd64
 - azurerm 2.99.0
 
 ### Para levantar la infraestructura en azure correr el comando
-- Remplazar los archivos correccion-vars.tf y credentials.tf con los personales con el acceso al provider
+- Remplazar los archivos "correccion-vars.tf" y "credentials.tf" con los archivos personales con el acceso al provider
 
 ```console
 > cd terraform
@@ -22,20 +22,20 @@ Version de terraform y provider utilizada
 > terraform plan
 > terraform apply
 ```
-Diagrama de la infraestructura que levantara terraform
+Diagrama de la infraestructura que se levantara con terraform
 
 ![](imgs/Diagram-terraform.png)
 
 ## Configuración con Ansible
 
-Configuraciónes previas a lanzar el ./deploy.sh
-Conectarse por ssh a las ips publicas con el usuario "ssh_user" y "public_key_path" configurado en el archivo de terraform "correccion-vars.tf", es necesario configurar las direcciones IPS públicas en los siguientes archivos
+Estas son las configuraciones previas para lanzar "./deploy.sh",
+conectarse por ssh a las ips publicas dadas por azure con el usuario "ssh_user" y "public_key_path" configurado en el archivo de terraform "correccion-vars.tf", es necesario configurar las direcciones IPS públicas en los siguientes archivos
 
 - ansible/hosts.azure
 - ansible/group_vars/all.yaml
 - ansible/roles/crear-nfs/templates/exports.j2
 
-En el nodo master
+Realizar lo siguiente en el nodo master
 ```console
 [adminUsername@vm-master ~]$ sudo su
 [root@vm-master adminUsername]# dnf install epel-release -y
@@ -44,14 +44,16 @@ En el nodo master
 [root@vm-master adminUsername]# ansible-galaxy collection install community.general
 ```
 
-En los nodos sobre los cuales Ansible realizara Configuraciónes
+Realizar lo siguiente en los nodos sobre los cuales Ansible realizara configuraciones
 ```console
 > dnf install python36 -y
 ```
-En el master copiar y pegar los pares de clave generados  en 
+
+En el nodo master 
+Copiar y pegar los pares de clave generados (de preferencia los mismo con los se desplego terraform) en:
 - /home/adminUsername/.ssh/
 
-Clonando el repositorio
+Clonando el repositorio en el master
 ```console
 > cd /home/adminUsername/
 > git clone https://github.com/fabio97U/cp2_unir.git
@@ -59,22 +61,23 @@ Clonando el repositorio
 > cd cp2_unir/ansible/
 > ansible -i hosts.azure -m ping all
 > ./deploy.sh
-> curl http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/
 ```
 
-Validar el despliegue de la simple aplicación
+Una vez termine el despliegue, podemos validar el despliegue de la simple aplicación con un curl
 ```console
 > curl localhost:8001/api/v1/namespaces/kubernetes-dashboard/services
 ```
 
-Diagrama de la aplicación a levantar ansible es el siguiente:
+Diagrama de la aplicación a levantar con ansible es el siguiente:
 ![](imgs/Diagram-ansible.png)
 
 
 #### Link demostración
 En el siguiente video se muestra todo el proceso de despliegue descrito en los pasos anteriores
 [Demostración](https://youtu.be/iQag6f1xOw8)
-
+, los siguientes minutos se pueden saltar
+- 00:45-03:50, se realiza el terraform apply
+- 10:40-17:20, se realiza el ./deploy.sh
 
 #### Borrar repositorio
 ```console
