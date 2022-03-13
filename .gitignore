@@ -1,4 +1,4 @@
-terraform/*credentials.tf
+# terraform/*credentials.tf
 
 # Local .terraform directories
 **/.terraform/*

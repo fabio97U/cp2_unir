@@ -1,5 +1,5 @@
 ---
-- name: VDeberemos verificar que en el master el controller manager está desplegado con las opciones --cluster-cidr= y --allocate-node-cidrs=true
+- name: Deberemos verificar que en el master el controller manager está desplegado con las opciones --cluster-cidr= y --allocate-node-cidrs=true
   shell: "ps ax | grep cluster"
 
 # - name: En el nodo master y en los workers será necesario abrir los siguientes puertos
