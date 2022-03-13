@@ -1,15 +1,15 @@
 ansible_ssh_private_key_file: /home/adminUsername/.ssh/id_rsa_cp2
 
-master_address: "20.229.49.162"
-worker01_address: "20.229.50.105"
-worker02_address: "20.229.50.94"
-nfs_address: "20.229.49.150"
+master_address: "20.126.84.71"
+worker01_address: "20.126.84.127"
+worker02_address: "20.126.84.84"
+nfs_address: "20.126.84.98"
 
 pod_network_cidr: "192.169.0.0/16"
 
 workers_rule:
-  - "rule family=ipv4 source address=20.229.50.105/32 accept"
-  - "rule family=ipv4 source address=20.229.50.94/32 accept"
+  - "rule family=ipv4 source address=20.126.84.127/32 accept"
+  - "rule family=ipv4 source address=20.126.84.84/32 accept"
 
 kube_perm_workers_rule: rule family=ipv4 source address=172.17.0.1/16 accept
 
