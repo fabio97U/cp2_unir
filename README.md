@@ -24,7 +24,7 @@ Version de terraform y provider utilizada
 ```
 Diagrama de la infraestructura que levantara terraform
 
-![](imgs/Diagram-terraform.svg)
+![](imgs/Diagram-terraform.png)
 
 ## Configuracion con Ansible
 
@@ -49,3 +49,4 @@ ansible -i hosts.azure -m ping all
 Borrar repositorio
 cd /home/adminUsername/
 rm -rf /home/adminUsername/cp2_unir
+
