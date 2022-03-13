@@ -22,7 +22,6 @@ ansible-playbook -i hosts.azure 06-uniendo-workers.yaml
 
 ansible-playbook -i hosts.azure 07-desplegando-aplicacion.yaml
 # Desplegando aplicacion
-# > kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml
 # > kubectl proxy
 # > curl localhost:8001/api/v1/namespaces/kubernetes-dashboard/services
 

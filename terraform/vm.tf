@@ -39,21 +39,6 @@ resource "azurerm_linux_virtual_machine" "myVM" {
     storage_account_uri = azurerm_storage_account.stAccount.primary_blob_endpoint
   }
 
-
-  # provisioner "file" {
-  #   connection {
-  #     type = "ssh"
-  #     user = var.ssh_user
-  #     host = azurerm_public_ip.myPublicIp[count.index].id
-
-  #     private_key = file(var.private_key_path)
-  #     agent       = false
-  #     timeout     = "10m"
-  #   }
-  #   source      = "/home/${var.ssh_user}/.ssh/id_rsa_cp2.pub"
-  #   destination = "/home/${var.ssh_user}/.ssh/id_rsa_cp2.pub"
-  # }
-
   tags = {
     environment = "CP2"
   }
